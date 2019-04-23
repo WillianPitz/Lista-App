@@ -1,0 +1,29 @@
+{
+  "name": "angularjs_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/animations": "github:angular/animations-builds",
+    "@angular/cdk": "github:angular/cdk-builds",
+    "@angular/material": "github:angular/material2-builds",
+    "@material/animation": "1.0.0",
+    "angular": "1.7.8",
+    "angular-bootstrap": "0.12.2",
+    "angular-messages": "1.7.8",
+    "angular-route": "1.7.8",
+    "angular-ui-bootstrap": "2.5.6",
+    "body-parser": "1.18.3",
+    "express": "4.16.4",
+    "inputmask": "4.0.6",
+    "jquery": "3.3.1",
+    "ng-mask": "3.1.1",
+    "python": "0.0.4"
+  }
+}
