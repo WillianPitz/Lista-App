@@ -19,6 +19,9 @@ public class Contato {
     @Column
     private String nome;
 
+    @Column(name="modelo_celular")
+    private String modeloCelular;
+
     @Column
     @Enumerated(EnumType.STRING)
     private OperadoraEnum operadora;
@@ -41,6 +44,14 @@ public class Contato {
 
     public String getNome() {
         return nome;
+    }
+
+    public String getModeloCelular() {
+        return modeloCelular;
+    }
+
+    public void setModeloCelular(String modeloCelular) {
+        this.modeloCelular = modeloCelular;
     }
 
     public void setNome(String nome) {
