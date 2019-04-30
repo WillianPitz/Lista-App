@@ -15,8 +15,8 @@ angular.module("listaTelefonica").factory("contatosAPI", function ($http, config
 		return $http.delete(config.baseUrl + "/contatos/" + id);
 	};
 
-	var _updateContato = function (id) {
-		return $http.put(config.baseUrl + "/contatos/" + id);
+	var _updateContato = function (contato) {
+		return $http.put(config.baseUrl + "/contatos", contato);
 	};	
 
 	return {

@@ -1,11 +1,19 @@
-angular.module("listaTelefonica").controller("modalController", function ($scope, $modal, $document) {
-	
-	$scope.ok = function () {
-		$uibModalInstance.close($scope.contato);
+angular.module("listaTelefonica").controller("modalController", function ($scope, $modalInstance, $modal, contatoModal, contatosAPI, operadorasModal) {
+	$scope.operadoras = operadorasModal;
+	$scope.contato = contatoModal;
+
+	$scope.save = function () {
+		contatosAPI.updateContato($scope.contato).then(()=>{
+			closeModal(true);	
+		});
 	};
 
 	$scope.cancel = function () {
-		$uibModalInstance.dismiss('cancel');
+		closeModal(false);
 	};
+
+	function closeModal(res){
+		$modalInstance.close(res);
+	}
 	
 });

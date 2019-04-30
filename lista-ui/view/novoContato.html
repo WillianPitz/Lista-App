@@ -1,12 +1,18 @@
 <div class="jumbotron">
 	<form name="contatoForm">
-		<input class="form-control" type="text" ng-model="contato.nome" name="nome" placeholder="Nome" ng-required="true" ng-minlength="10"/>
-		<input class="form-control" type="text" ng-model="contato.telefone" mask="(99) 99999-9999" name="telefone" placeholder="Telefone" ng-required="true"/>
-		<!--<input class="form-control" type="text" ng-model="contato.data" name="data" placeholder="Data" ui-date/>-->
-		<select class="form-control" ng-model="contato.operadora" ng-options="operadora as operadora for operadora in operadoras">
-			<option value="">Selecione uma operadora</option>
-		</select>
+			<input class="form-control" type="text" ng-model="contato.nome" name="nome" placeholder="Nome" ng-required="true" ng-minlength="10"/>
+
+			<input class="form-control" type="text" ng-model="contato.telefone" mask="(99) 99999-9999" name="telefone" placeholder="Telefone" ng-required="true"/>
+
+			<input class="form-control" type="text" ng-model="contato.modeloCelular" name="modeloCelular" placeholder="Modelo do Celular" ng-required="true"/>
+
+			<!--<input class="form-control" type="text" ng-model="contato.data" name="data" placeholder="Data" ui-date/>-->
+
+			<select class="form-control" ng-model="contato.operadora" ng-options="operadora as operadora for operadora in operadoras">
+				<option value="">Selecione uma operadora</option>
+			</select>
 	</form>
+
 	<div ng-show="contatoForm.nome.$dirty" ng-messages="contatoForm.nome.$error">
 		<div ng-message="required" class="alert alert-danger">
 			Por favor, preencha o campo nome!

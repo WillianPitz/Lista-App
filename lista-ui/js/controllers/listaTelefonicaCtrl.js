@@ -1,34 +1,14 @@
-angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope, contatos, operadoras, serialGenerator, contatosAPI, $document, $modal) {
+angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope, contatos, operadoras, contatosAPI, $document, $modal) {
 	$scope.app = "Lista Telefonica";
 	$scope.contatos = contatos.data;
 	$scope.operadoras = operadoras.data;
 	
-
-	var generateSerial = function (contatos) {
-		contatos.forEach(function (item) {
-			item.serial = serialGenerator.generate();
-		});
-	};
-
 	function getAllContatos(){
 		contatosAPI.getContatos().then((res)=>{
 			$scope.contatos = res.data;
 		})
 	}
 
-	$scope.adicionarContato = function (contato) {
-		contato.serial = serialGenerator.generate();
-		contatosAPI.saveContato(contato).then(
-			function success(data) {
-				delete $scope.contato;
-				$scope.contatoForm.$setPristine();
-				carregarContatos();
-			},
-			function error(){
-				alert('deu erro');
-			}
-		);
-	};
 	$scope.apagarContatos = function (contatos) {
 		var contatosDelete = contatos.filter(function (contato) {
 			if (contato.selecionado) return contato;
@@ -51,13 +31,25 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
 		$scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
 	};
 	
-	$scope.openModal = function () {
+	$scope.openModal = function (contato) {
 		var modalInstance = $modal.open({
 		  animation: $scope.animationsEnabled,
-  	      templateUrl: 'view/detalhesContato.html',
-	      controller: 'modalController',
-	      controllerAs: '$scope'
-	  	});
+      templateUrl: 'view/detalhesContato.html',
+      controller: 'modalController',
+      resolve: {
+      	contatoModal: ()=>{
+      		return angular.copy(contato);
+      	},
+      	operadorasModal: ()=>{
+      		return angular.copy($scope.operadoras);
+      	}
+			}
+		});
+		modalInstance.result.then((res)=>{
+		if (res) {
+  			getAllContatos();
+  		}
+  	});
 	}
-	generateSerial($scope.contatos);
+
 });

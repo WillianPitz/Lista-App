@@ -5,7 +5,7 @@
 			<th></th>
 			<th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
 			<th><a href="" ng-click="ordenarPor('telefone')">Telefone</a></th>
-			<th>Operadora</th>
+			<th><a href="" ng-click="ordenarPor('operadora')">Operadora</a></th>
 			<!--<th>Data</th>-->
 			<th></th>
 		</tr>
@@ -13,9 +13,9 @@
 			<td><input type="checkbox" ng-model="contato.selecionado"/></td>
 			<td>{{contato.nome | name}}</td>
 			<td>{{contato.telefone}}</td>
-			<td>{{contato.operadora.nome}}</td>
+			<td>{{contato.operadora}}</td>
 			<!--<td>{{contato.data | date:'dd/MM/yyyy'}}</td>-->
-			<td><a class="btn btn-link" ng-click="openModal()"><i class="fas fa-user-edit fa-lg"></i></a></td>
+			<td><a class="btn btn-link" ng-click="openModal(contato)"><i class="fas fa-user-edit fa-lg"></i></a></td>
 		</tr>
 	</table>
 	<hr/>
